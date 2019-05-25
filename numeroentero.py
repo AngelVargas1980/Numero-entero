@@ -35,3 +35,46 @@ class Desk:
         self.var1.focus()
         self.var1.grid(row = 1, column = 1)
         
+        # igual que arriba una etiqueta y un campo input para ingresar valores
+        Label(frame, text = 'segundo numero: ').grid(row = 2, column = 0)
+        self.var2 = Entry(frame)
+        self.var2.grid(row = 2, column = 1)
+        
+        #Creamos un boton para ejecutar las operaciones
+        #Button(frame, text = 'Sumar', command = self.sumar).grid(row = 3, columnspan = 2, sticky = W + E)
+        #Button(frame, text = 'Restar', command = self.restar).grid(row = 4, columnspan = 3, sticky = W + E)
+        #Button(frame, text = 'Multiplicar', command = self.multiplicar).grid(row = 5, columnspan = 4, sticky = W + E)
+        Button(frame, text = 'Resultado', command = self.entero).grid(row = 6, columnspan = 5, sticky = W + E)
+    
+        #designamos un área para mensajes
+        self.message = Label(text = '', fg = 'red')
+        self.message.grid(row = 3, column = 0, columnspan = 2, sticky = W + E)
+        
+    # creamos una función para validar que los campos no esten en blanco
+    def validation(self):
+        return len(self.var1.get()) != 0 and len(self.var2.get()) != 0
+
+    def entero(self):
+        a = int(self.var1.get())
+        b = int(self.var2.get())
+
+        if a%b == 0:
+            self.message['text'] = "División exacta.  Cociente:  " +  str(a/b)
+
+        elif a%b != 0:
+            self.message['text'] = "División no exacta Cociente:  "+ str(a/b) + "Resto:   " + str(a%b)
+
+
+#print("División de numero enteros")
+
+#validamos si estamos en la aplicación inicial
+if __name__ == '__main__':
+    
+    #asignamos la propiedad de tkinter a la variable window
+    window = Tk()
+    
+    #en la variable app guardamos la clase Desk y le enviamos como parametro la ventana 
+    app = Desk(window)
+
+    #ejecutamos un mainloop para que se ejecute la ventana
+    window.mainloop()
