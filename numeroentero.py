@@ -24,7 +24,7 @@ class Desk:
         self.wind.title('Aplicación con interface gráfica en Python - By christian Rivera')
         
         # creamos un contenedor
-        frame = LabelFrame(self.wind, text = 'Sumar 2 valores')
+        frame = LabelFrame(self.wind, text = 'Dividir 2 valores')
         frame.grid(row = 0, column = 0, columnspan = 3, pady = 20)
         
         # creamos un etiqueta
